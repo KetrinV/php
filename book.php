@@ -2,10 +2,10 @@
 
 require_once('connection.php');
 
-$id = $_GET('id');
+$id = $_GET['id'];
 
 $stmt = $pdo->prepare('SELECT * FROM books WHERE id = :id');
 $stmt->execute(['id' => $id]);
 $book = $stmt->fetch();
 
-var_dump($books);
+var_dump($book);
