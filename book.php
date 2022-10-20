@@ -40,7 +40,7 @@ $stmt->execute(['id' => $id]);
         <h2>Language: <?=$book['language'];?> </h2>
         <h2>Pages: <?=$book['pages'];?> </h2>
         <h2>Type: <?=$book['type'];?> </h2>
-        <h2>Price: <?=round($book['price']);?> € </h2>
+        <h2>Price: <?=number_format(round($book['price']), 2, ',',  '');?>€</h2>
         <h3>Summary: <?=$book['summary'];?> </h3>
         <form action="delete.php" method="POST">
             <input type="hidden" name="id" value="<?=$id?>">
