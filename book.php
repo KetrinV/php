@@ -41,7 +41,17 @@ $stmt->execute(['id' => $id]);
     <h2>Language: <?=$book['language'];?> </h2>
     <h2>Pages: <?=$book['pages'];?> </h2>
     <h2>Type: <?=$book['type'];?> </h2>
-    <h2>Price: <?=$book['price'];?> € </h2>
+    <h2>Price: <?=round($book['price']);?> € </h2>
     <h3>Summary: <?=$book['summary'];?> </h3>
+    
+    <div>
+        <span><a href="edit.php?id=<?=$id;?>">Muuda</a></span>
+
+        <form action="delete.php" method="POST">
+            <input type="hidden" name="id" value="<?=$id?>">
+            <input type="submit" value="Kustuta" name="delete">
+        </form>
+
+    </div>
 </body>
 </html>
