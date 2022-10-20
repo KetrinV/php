@@ -9,7 +9,7 @@ $stmt->execute(['id' => $id]);
 $book = $stmt->fetch();
 
 $stmt = $pdo->prepare('SELECT * FROM authors LEFT JOIN book_authors ON authors.id=book_authors.author_id WHERE book_authors.book_id = :id');
-$stmt->execute(['id' => $id]); 
+$stmt->execute(['id' => $id]);
 
 ?>
 
@@ -26,27 +26,22 @@ $stmt->execute(['id' => $id]);
     <img src="<?=$book['cover_path'];?>">
     <br>
     <p><span>Laos:</span> <span><?=$book['stock_saldo'];?></span></p>
-    <div>
-        <span><a href="edit.php?id=<?=$id;?>">Muuda</a></span>
-        <span><a href="delete.php?id=<?=$id;?>">Kustuta</a></span>
-    </div>
-    Authors: 
+
+    Autorid: 
     <?php
     while ($author = $stmt->fetch())
     {
         echo '<li>' . $author['first_name'] . ' ' . $author['last_name'] . '</li>';
     }
     ?>
-    <h2>Realease date: <?=$book['release_date'];?> </h2>
-    <h2>Language: <?=$book['language'];?> </h2>
-    <h2>Pages: <?=$book['pages'];?> </h2>
-    <h2>Type: <?=$book['type'];?> </h2>
-    <h2>Price: <?=round($book['price']);?> € </h2>
-    <h3>Summary: <?=$book['summary'];?> </h3>
-    
     <div>
         <span><a href="edit.php?id=<?=$id;?>">Muuda</a></span>
-
+        <h2>Realease date: <?=$book['release_date'];?> </h2>
+        <h2>Language: <?=$book['language'];?> </h2>
+        <h2>Pages: <?=$book['pages'];?> </h2>
+        <h2>Type: <?=$book['type'];?> </h2>
+        <h2>Price: <?=round($book['price']);?> € </h2>
+        <h3>Summary: <?=$book['summary'];?> </h3>
         <form action="delete.php" method="POST">
             <input type="hidden" name="id" value="<?=$id?>">
             <input type="submit" value="Kustuta" name="delete">
@@ -55,3 +50,5 @@ $stmt->execute(['id' => $id]);
     </div>
 </body>
 </html>
+    
+  
