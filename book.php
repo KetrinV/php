@@ -50,5 +50,3 @@ $stmt->execute(['id' => $id]);
     </div>
 </body>
 </html>
-    
-  
