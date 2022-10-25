@@ -35,7 +35,7 @@ $stmt->execute(['id' => $id]);
     }
     ?>
     <div>
-        
+
         <h2>Realease date: <?=$book['release_date'];?> </h2>
         <h2>Language: <?=$book['language'];?> </h2>
         <h2>Pages: <?=$book['pages'];?> </h2>
