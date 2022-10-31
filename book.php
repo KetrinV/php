@@ -20,14 +20,15 @@ $stmt->execute(['id' => $id]);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?=$book['title'];?></title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1><?=$book['title'];?></h1>
     <img src="<?=$book['cover_path'];?>">
     <br>
-    <p><span>Laos:</span> <span><?=$book['stock_saldo'];?></span></p>
+    <h2><span>Stock saldo:</span> <span><?=$book['stock_saldo'];?></span></h2>
 
-    Autorid: 
+    <h2>Authors: </h2> 
     <?php
     while ($author = $stmt->fetch())
     {
@@ -41,11 +42,12 @@ $stmt->execute(['id' => $id]);
         <h2>Pages: <?=$book['pages'];?> </h2>
         <h2>Type: <?=$book['type'];?> </h2>
         <h2>Price: <?=number_format(round($book['price']), 2, ',',  '');?>€</h2>
-        <h3>Summary: <?=$book['summary'];?> </h3>
-        <span><a href="edit.php?id=<?=$id;?>">Muuda</a></span>
+        <span><a class="changetext"href="edit.php?id=<?=$id;?>">Change</a></span>
+        <br>
+        <br>
         <form action="delete.php" method="POST">
             <input type="hidden" name="id" value="<?=$id?>">
-            <input type="submit" value="Kustuta" name="delete">
+            <input type="submit" value="Delete" name="Delete">
         </form>
 
     </div>

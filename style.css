@@ -1,0 +1,21 @@
+.changetext{
+    background-color: #7ee95a;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 10px;
+}
+.authorstext{
+    background-color: #7ee95a;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 10px;
+}
+a{
+    text-decoration: none;
+}

@@ -13,18 +13,24 @@ $stmt = $pdo->query('SELECT * FROM books WHERE is_deleted=0');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <a href="add_author.php">Lisa autor</a>
+    <nav style="display: flex; justify-content: space-between;">
+        <a href="add_author.php">Add author</a>
+
+        <form action="index.php" method="get">
+            <input type="text" name="q" placeholder="Otsing">
+            <input type="submit" value="Otsi">
+        </form>
     </nav>
 
     <main>
         <ul>
             <?php while ($book = $stmt->fetch()) { ?>
                 <li>
-                    <a href="book.php?id=<?=$book['id'];?>"><?=$book['title'];?></a>;
+                    <a href="book.php?id=<?=$book['id'];?>"><?=$book['title'];?></a>
                 </li>
             <?php } ?>
         </ul>
