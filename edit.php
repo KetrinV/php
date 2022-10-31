@@ -4,20 +4,19 @@ require_once('connection.php');
 
 $id = $_GET['id'];
 
-if ( isset($_POST['edit']) && $_POST['edit'] == 'Salvesta' ) {
-
-    $stmt = $pdo->prepare('UPDATE books SET title = :title, stock_saldo = :stock_saldo WHERE id = :id');
-    $stmt->execute(['title' => $_POST['title'], 'stock_saldo' => $_POST['stock-saldo'], 'id' => $id]);
+if ( isset($_POST['edit']) && $_POST['edit']== "Salvesta" ) {
+    $stmt = $pdo->prepare('UPDATE books SET title = :title, stock_saldo = :stock_saldo, price = :price WHERE id = :id');
+    $stmt->execute(['title' => $_POST['title'], 'stock_saldo' => $_POST['stock-saldo'], 'price' => str_replace(',', '.', $_POST['price']), 'id' => $id]);
 
     header('Location: book.php?id=' . $id);
 }
 
-$stmt = $pdo->prepare('SELECT * FROM books WHERE id = :id');
-$stmt->execute(['id' => $id]);
+$stmtBook = $pdo->prepare('SELECT * FROM books WHERE id = :id');
+$stmtBook->execute(['id' => $id]);
 $book = $stmt->fetch();
 
-$stmt = $pdo->prepare('SELECT * FROM authors LEFT JOIN book_authors ON authors.id=book_authors.author_id WHERE book_authors.book_id = :id');
-$stmt->execute(['id' => $id]);
+$stmtBookAuthors = $pdo->prepare('SELECT * FROM authors LEFT JOIN book_authors ON authors.id=book_authors.author_id WHERE book_authors.book_id = :id');
+$stmtBookAuthors->execute(['id' => $id]);
 
 // var_dump($book);
 ?>
@@ -41,6 +40,14 @@ $stmt->execute(['id' => $id]);
     <br>
     <br>
     <label for="title">Authors:</label> <input type="text" name="author" value="<?=$authors['authors'];?>">
+    <br>
+    <select name="authors" id="">
+        <?php while ($book = $stmt->fetch()) { ?>
+                <li>
+                    <a href="book.php?id=<?=$book['id'];?>"><?=$book['title'];?></a>
+                </li>
+        <?php } ?>
+    </select>
     <br>
     <input type="submit" value="Save" name="edit">
 </form>

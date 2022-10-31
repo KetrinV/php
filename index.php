@@ -21,8 +21,8 @@ $stmt = $pdo->query('SELECT * FROM books WHERE is_deleted=0');
         <a href="add_author.php">Add author</a>
 
         <form action="index.php" method="get">
-            <input type="text" name="q" placeholder="Otsing">
-            <input type="submit" value="Otsi">
+            <input type="text" name="q" placeholder="Searching">
+            <input type="submit" value="Search">
         </form>
     </nav>
 
