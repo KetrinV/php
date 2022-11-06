@@ -37,11 +37,13 @@ $stmtAuthors->execute(['book_id' => $id]);
 <body>
 
 <form action="edit.php?id=<?=$id;?>" method="POST">
-    <label for="title">Pealkiri:</label> <input type="text" name="title" value="<?=$book['title'];?>" style="width: 320px;">
+    <label for="title">Title:</label> <input type="text" name="title" value="<?=$book['title'];?>" style="width: 320px;">
     <br>
-    <label for="title">Laos:</label> <input type="text" name="stock-saldo" value="<?=$book['stock_saldo'];?>">
     <br>
-    <div style="font-weight: bold;">Autorid</div>
+    <label for="title">Stock saldo:</label> <input type="text" name="stock-saldo" value="<?=$book['stock_saldo'];?>">
+    <br>
+    <br>
+    <div style="font-weight: bold;">Authors:</div>
     <select name="authors" id="author-dd">
         <option value=""></option>
         <?php while ($author = $stmtAuthors->fetch()) { ?>
@@ -58,7 +60,8 @@ $stmtAuthors->execute(['book_id' => $id]);
             <input class="author-id" type="hidden" name="author[]" value="<?=$bookAuthor['id'];?>">
         </div>
     <?php } ?>
-    <input type="submit" value="Salvesta" name="edit">
+    <br>
+    <input type="submit" value="Save" name="edit">
 </form>
 <script src="app.js"></script>
 </body>
