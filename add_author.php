@@ -20,6 +20,7 @@ if ( isset($_POST['add-author']) ) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lisa autor</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -30,7 +31,7 @@ if ( isset($_POST['add-author']) ) {
         <br>
         <input type="text" name="last-name" placeholder="Perenimi">
         <br>
-        <input type="submit" name="add-author" value="Lisa">
+        <input class="authorstext" type="submit" name="add-author" value="Lisa">
     </form>
 </body>
 </html>
