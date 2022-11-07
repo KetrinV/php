@@ -1,2 +1,2 @@
 # php bookstore 
-did make bookstore with php and mysql
+Did make bookstore with php and mysql
