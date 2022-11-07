@@ -5,7 +5,7 @@ require_once('connection.php');
 $q= $_GET['q'];
 
 if (isset($q) && $q) {
-    $stmt = $pdo->prepare('SELECT * FROM books WHERE is_deleted=0 AND title LIKE ":q" ');
+    $stmt = $pdo->prepare('SELECT * FROM books WHERE is_deleted=0 AND title LIKE :q ');
     $stmt->execute(['q' => "%{$q}%"]);
 } else {
     $stmt = $pdo->query('SELECT * FROM books WHERE is_deleted=0');
